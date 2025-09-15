@@ -1,5 +1,6 @@
 package circus;
 
+import circus.animal.Elephant;
 import circus.stuff.Equipment;
 import circus.stuff.Cannon;
 import circus.stuff.Ladder;
@@ -8,6 +9,10 @@ import circus.animal.Animal;
 import circus.animal.Duck;
 import circus.animal.Parrot;
 import circus.animal.Tiger;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Circus {
@@ -43,8 +48,54 @@ public class Circus {
     }
 
     public static void main(String[] args) {
-        makeAnimalsTalk();
-        System.out.println("Total value of animals " + calculateAssetValue(animals));
-        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+//        System.out.println("number of animals in our circus: " + animals.length);
+//
+//        animals[3] = new Duck("Louie");
+//        System.out.println("number of animals in our circus: " + animals.length);
+//        makeAnimalsTalk();
+//        System.out.println("Total value of animals " + calculateAssetValue(animals));
+//        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+        ArrayList<Animal> animalArrayList = new ArrayList<>(Arrays.asList(animals));
+//        printAllAnimals(animalArrayList);
+//        printCircusSize(animalArrayList);
+        animalArrayList.add(new Duck("fsdehu"));
+
+//        printAllAnimals(animalArrayList);
+//        System.out.println("number of animals: " + animalArrayList.size());
+
+        Elephant dunbo = new Elephant("junbo");
+        animalArrayList.add(dunbo);
+        printCircusSize(animalArrayList);
+
+        Animal candidateAnimal = findAnimal(animalArrayList, "junbo");
+
+        System.out.println("Junbo is in position: "
+                + animalArrayList.indexOf(candidateAnimal));
+
+        System.out.println("Before sorting: ");
+        printAllAnimals(animalArrayList);
+        animalArrayList.sort(Animal.AnimalNameComaparator);
+        System.out.println("After sorting: ");
+        printAllAnimals(animalArrayList);
+    }
+
+
+    private static void printCircusSize(ArrayList<Animal> animalArrayList) {
+        System.out.println("number of animals: " + animalArrayList.size());
+    }
+
+    private static void printAllAnimals(ArrayList<Animal> animalArrayList) {
+        for (Animal a : animalArrayList) {
+            System.out.println(a);
+        }
+    }
+
+    private static Animal findAnimal(ArrayList<Animal> animalArrayList, String candidate) {
+        for (Animal a : animalArrayList) {
+            if (a.name == candidate) {
+                return a;
+            }
+        }
+        return null;
     }
 }
