@@ -6,8 +6,8 @@ import java.util.Comparator;
 
 
 public abstract class Animal implements Asset {
-
     public String name;
+
     public abstract String speak();
 
     public static Comparator<Animal> AnimalNameComaparator = new Comparator<Animal>() {
