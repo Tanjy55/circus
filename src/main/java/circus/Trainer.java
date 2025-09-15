@@ -1,3 +1,10 @@
+package circus;
+
+import circus.animal.Animal;
+import circus.animal.Bird;
+import circus.animal.Duck;
+import circus.animal.Parrot;
+
 public class Trainer {
     public static void main(String[] args) {
         Duck d = new Duck();
@@ -14,10 +21,6 @@ public class Trainer {
 
         train(new Duck());
         train(new Parrot());
-
-        Animal a2 = new Animal();
-        Bird b2 = new Bird();
-
     }
 
     private static void getToSpeak(Animal animal) {
